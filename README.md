@@ -6,17 +6,17 @@ An automated, touchless Pomodoro timer built with an ESP32 microcontroller, an I
 
 ## 🌟 Key Features
 
-* **Touchless Gesture Control (IR Sensor):**
-  * **Short Wave (< 1.5s):** Start or toggle manual Pause/Resume.
-  * **Long Hold (>= 3s):** Hard-reset system to `IDLE` state (`30:00`).
-* **Automated Desk Presence Auto-Pause (PIR Sensor):**
-  * Tracks physical presence at your desk.
-  * Automatically pauses the countdown if no movement is detected for 30 seconds (`AWAY (AUTO-PAUSE)`).
-  * Automatically resumes the countdown when you return to your seat.
-* **Integrated 30/5 Pomodoro Cycle:**
-  * **Focus Session:** 30 minutes countdown.
-  * **Mandatory Break:** Automatically switches to a 5-minute break prompt (`LEAVE & TAKE REST`).
-* **Non-Blocking Architecture:** Written in embedded C++ using a Finite State Machine (FSM) driven by `millis()` rather than blocking `delay()` statements.
+- **Touchless Gesture Control (IR Sensor):**
+  - **Short Wave (< 1.5s):** Start or toggle manual Pause/Resume.
+  - **Long Hold (>= 3s):** Hard-reset system to `IDLE` state (`30:00`).
+- **Automated Desk Presence Auto-Pause (PIR Sensor):**
+  - Tracks physical presence at your desk.
+  - Automatically pauses the countdown if no movement is detected for 30 seconds (`AWAY (AUTO-PAUSE)`).
+  - Automatically resumes the countdown when you return to your seat.
+- **Integrated 30/5 Pomodoro Cycle:**
+  - **Focus Session:** 30 minutes countdown.
+  - **Mandatory Break:** Automatically switches to a 5-minute break prompt (`LEAVE & TAKE REST`).
+- **Non-Blocking Architecture:** Written in embedded C++ using a Finite State Machine (FSM) driven by `millis()` rather than blocking `delay()` statements.
 
 ---
 
@@ -36,6 +36,8 @@ An automated, touchless Pomodoro timer built with an ESP32 microcontroller, an I
 
 ## ⚙️ Calibration & Physical Setup
 
+<img width="1280" alt="setup jpg" src="https://github.com/user-attachments/assets/4f72b9c8-b57a-4e3d-a782-73ca9a64a075" />
+
 For the software-level 30-second timeout to function properly, the hardware potentiometers on the back of the HC-SR501 PIR sensor must be adjusted:
 
 1. **Time Delay Trimpot (Right Knob):** Turn **fully counter-clockwise**. This reduces the hardware signal hold duration to its minimum (~2–3 seconds), handing timing control over to the ESP32 code.
@@ -47,3 +49,20 @@ For the software-level 30-second timeout to function properly, the hardware pote
 ## 🔄 State Machine Logic
 
 The firmware operates across six distinct operational states:
+
+<img width="1365" alt="fsm-diagram" src="https://github.com/user-attachments/assets/c61b1062-b993-4039-936c-28c469a71065" />
+
+---
+
+## 💻 Getting Started
+
+### Prerequisites
+* **Arduino IDE** (v2.0 or higher recommended)
+* **ESP32 Board Package:** Added via `Tools > Board > Boards Manager` (`esp32` by Expressif Systems)
+* **Required Libraries:**
+  * `LiquidCrystal_I2C` by Frank de Brabander
+
+### Installation & Flashing
+1. Clone this repository:
+   ```bash
+   git clone [https://github.com/YOUR_USERNAME/smart-desk-timer-esp32.git](https://github.com/YOUR_USERNAME/smart-desk-timer-esp32.git)
